@@ -3,7 +3,7 @@
 
 ## Installation
 ```shell
-pip install --upgrade git+git://github.com/quyxishi/aiomailtm@main
+pip install --upgrade git+https://github.com/quyxishi/aiomailtm@main
 ```
 
 ## Usage
