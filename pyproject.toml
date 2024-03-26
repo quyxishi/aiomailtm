@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aiomailtm"
+description = "Asynchronous & exception-less implementation of Mail.tm API"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = [
+	"async",
+	"mailtm"
+]
+authors = [
+	{ name = "quyxishi", email = "78678868+quyxishi@users.noreply.github.com" }
+]
+classifiers = [
+	"Development Status :: 4 - Beta",
+	"Programming Language :: Python",
+	"Programming Language :: Python :: 3.8",
+	"Programming Language :: Python :: 3.9",
+	"Programming Language :: Python :: 3.10",
+	"Programming Language :: Python :: 3.11",
+	"Programming Language :: Python :: 3.12",
+	"Programming Language :: Python :: Implementation :: CPython",
+	"Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+	"aiohttp[speedups]>=3.9.3",
+	"aiofiles>=23.2.1",
+	"orjson>=3.9.15"
+]
+dynamic = ["version"]
+
+[project.urls]
+Documentation = "https://github.com/quyxishi/aiomailtm#readme"
+Issues = "https://github.com/quyxishi/aiomailtm/issues"
+Source = "https://github.com/quyxishi/aiomailtm"
+
+[tool.hatch.version]
+path = "aiomailtm/__version__.py"
+
+[tool.coverage.report]
+exclude_lines = [
+	"no cov",
+	"if __name__ == .__main__.:",
+	"if TYPE_CHECKING:",
+]

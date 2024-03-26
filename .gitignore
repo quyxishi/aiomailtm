@@ -1,0 +1,14 @@
+.venv/
+
+__main__.py
+requirements.txt
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+dist/
+build/
+.eggs/
+*.egg
+*.egg-info
