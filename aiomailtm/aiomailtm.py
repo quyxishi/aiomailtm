@@ -185,7 +185,7 @@ class AioMailtmClient:
         if not self._recli_debug:
             return None
 
-        recli.__getattribute__(recli, __method)(__msg, *__args, **__kwargs)
+        recli.__getattribute__(recli, __method)(f'~<{__title__}>~: ' + __msg, *__args, **__kwargs)
 
     def _rassert(self, __expr: Any) -> bool:
         """Perform reverse assertion on `__expr`"""
@@ -227,7 +227,7 @@ class AioMailtmClient:
 
             self._recli_proxy(
                 'info',
-                f'~<aiomailtm>~: too many requests · #{self._api_retry} for {delay:.1f}s',
+                f'too many requests · #{self._api_retry} for {delay:.1f}s',
             )
 
             await self._fixed_sleep(delay)
@@ -235,7 +235,7 @@ class AioMailtmClient:
         elif not 200 <= response.status <= 204:
             self._recli_proxy(
                 'warn',
-                f'~<aiomailtm>~: <{self._process_url(response.url.__str__())}> *returned unexpected response* ~<{response.status}>~',
+                f'<{self._process_url(response.url.__str__())}> *returned unexpected response* ~<{response.status}>~',
             )
 
         self._api_retry = 1
@@ -281,7 +281,7 @@ class AioMailtmClient:
 
         return (
             self._recli_proxy(
-                'error', f'~<aiomailtm>~: <api>: {__error_response["detail"]}'
+                'error', f'<api>: {__error_response["detail"]}'
             )
             or True
         )
@@ -302,7 +302,7 @@ class AioMailtmClient:
             )
         except orjson.JSONDecodeError:
             self._recli_proxy(
-                'warn', '~<aiomailtm>~: </domains> *does not contains valid json*'
+                'warn', '</domains> *does not contains valid json*'
             )
             return None
 
@@ -344,7 +344,7 @@ class AioMailtmClient:
             accounts_serialize: Optional[Dict[str, str]] = orjson.loads(accounts_bytes)
         except orjson.JSONDecodeError:
             self._recli_proxy(
-                'warn', '~<aiomailtm>~: </accounts> *does not contains valid json*'
+                'warn', '</accounts> *does not contains valid json*'
             )
             return None
 
@@ -380,7 +380,7 @@ class AioMailtmClient:
             token_serialize: Optional[Dict[str, str]] = orjson.loads(token_bytes)
         except orjson.JSONDecodeError:
             self._recli_proxy(
-                'warn', '~<aiomailtm>~: </token> *does not contains valid json*'
+                'warn', '</token> *does not contains valid json*'
             )
             return None
 
@@ -413,7 +413,7 @@ class AioMailtmClient:
             )
         except orjson.JSONDecodeError:
             self._recli_proxy(
-                'warn', '~<aiomailtm>~: </messages> *does not contains valid json*'
+                'warn', '</messages> *does not contains valid json*'
             )
             return None
 
@@ -445,7 +445,7 @@ class AioMailtmClient:
         except orjson.JSONDecodeError:
             self._recli_proxy(
                 'warn',
-                f'~<aiomailtm>~: </messages/{__id}> *does not contains valid json*',
+                f'</messages/{__id}> *does not contains valid json*',
             )
             return None
 
