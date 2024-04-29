@@ -1,5 +1,7 @@
 from .aiomailtm import (
-    AioMailtmClient,
+    AioMailtmClient
+)
+from .structures import (
     Message,
     Account
 )
